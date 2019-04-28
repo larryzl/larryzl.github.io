@@ -224,3 +224,48 @@ tags: [kvm]
 再次登录发现mysql已经不存在了
 
 
+## 6. 问题整理
+
+1. raw格式无法创建快照
+		
+		$ virsh snapshot-create CentOs6.8
+		error: unsupported configuration: internal snapshot for disk vda unsupported for storage type raw
+
+	
+	**解决方法：**
+	
+	- 转换 raw 为 qcow2
+	
+			qemu-img convert -f raw -O qcow2 /data/kvm/CentOs6.8.img /data/kvm/centos6.8.qcow2
+	
+	- 修改虚拟机配置文件
+
+			virsh edit vm_name
+			# 此命令编辑的文件实际上是/etc/libvirt/qemu/目录下和虚拟机同名并且以xml结尾的文件
+			virsh edit CentOs6.8 
+
+			#将type和source file修改为指定格式。
+			
+			<disk type='file' device='disk'>
+			
+			      <driver name='qemu' type='qcow2' cache='none'/>
+			
+			      <source file='/data/kvm/centos6.8.qcow2'/>
+			
+			      <target dev='vda' bus='virtio'/>
+			
+			      <address type='pci' domain='0x0000' bus='0x00' slot='0x05' function='0x0'/>
+			
+			    </disk>
+
+	- 创建快照
+
+			virsh snapshot-create CentOs6.8
+			Domain snapshot 1457182425 created
+
+
+			
+	
+	
+
+
