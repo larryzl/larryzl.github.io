@@ -63,7 +63,7 @@ tags: [go]
 	set -e
 	
 	GOROOT=/home/go
-	GOPATH=/user/local/go
+	GOPATH=/usr/local/go
 	
 	echo $(date +"[%Y-%m-%d %H:%M:%S]") 开始下载 go 1.12.5
 	wget https://studygolang.com/dl/golang/go1.12.5.linux-amd64.tar.gz
@@ -71,7 +71,7 @@ tags: [go]
 	echo $(date +"[%Y-%m-%d %H:%M:%S]") 下载完成，开始解压
 	tar zxf go1.12.5.linux-amd64.tar.gz -C /usr/local/
 	
-	mkidr $GOROOT
+	mkdir $GOROOT
 	
 	cat >> /etc/profile <<EOF
 	export GOROOT=$GOROOT
