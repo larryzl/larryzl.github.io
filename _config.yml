@@ -5,7 +5,7 @@ baseurl:
 url: https://larryzl.github.io
 date_format: "ordinal"
 title: Larry
-subtitle: "学而不记则忘,记而不看则怠"
+subtitle: "分享-记录-学习"
 description: "Larry's Blog"
 keywords: linux,mysql,redis,python
 timezone: Asia/Shanghai
