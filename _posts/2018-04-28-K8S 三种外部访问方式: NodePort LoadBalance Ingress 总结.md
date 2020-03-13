@@ -2,8 +2,8 @@
 layout: post
 title: "K8S 三种外部访问方式: NodePort LoadBalance Ingress 总结"
 date: 2018-04-28 16:17:39 +0800
-category: K8S
-tags: [K8S]
+category: k8s
+tags: [k8s]
 ---
 * content
 {:toc}
