@@ -1,5 +1,5 @@
 ---
-	layout: post
+layout: post
 title: "Django restframework 框架笔记 (一)认证源码分析"
 date: 2019-04-26 10:38:44 +0800
 category: Django
