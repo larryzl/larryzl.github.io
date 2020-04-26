@@ -633,9 +633,9 @@ from rest_framework.authentication import BaseAuthentication
 
 class Authentication(BaseAuthentication):
     def authenticate(self, request):
-        token = request._request.GET.get('token')
+        token = request.data.get('token')
         try:
-            token_obj = models.UserInfo.objects.get(token=token)
+            token_obj = models.UserToken.objects.get(token=token)
             return (token_obj.user, token_obj)
         except:
             raise exceptions.AuthenticationFailed('用户认证失败')
