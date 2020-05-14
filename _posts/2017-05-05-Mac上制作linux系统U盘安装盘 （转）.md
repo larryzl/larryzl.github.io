@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mac上制作linux系统U盘安装盘 （转）"
-date: 2019-05-05 11:16:03 +0800
+date: 2017-05-05 11:16:03 +0800
 category: 其他
 tags: [其他]
 ---
