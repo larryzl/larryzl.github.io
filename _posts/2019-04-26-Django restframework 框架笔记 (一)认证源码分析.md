@@ -514,19 +514,20 @@ class OrderView(APIView):
                except exceptions.APIException:
                    self._not_authenticated()
                    raise
-   
+   						# 返回值的处理
                if user_auth_tuple is not None:
                    self._authenticator = authenticator
+                   # 如果有返回值，将登陆用户 与 登陆认证 分布保存到 request.user\request.auth 中
                    self.user, self.auth = user_auth_tuple
                    return
-   
+   				# 如果user_auth_tuple 为空，代表认证通过，但是没有登陆用户 与 登陆认证 信息，代表是游客
            self._not_authenticated()
-   ```
-
-   返回值就是例子中的 `return (token_obj.user, token_obj)`
-
-   当没有返回值，就执行 `self._not_authenticated()`，相当于匿名用户，没有通过认证
-
+```
+   
+返回值就是例子中的 `return (token_obj.user, token_obj)`
+   
+当没有返回值，就执行 `self._not_authenticated()`，相当于匿名用户，没有通过认证
+   
    ```python
        def _not_authenticated(self):
            """
@@ -545,8 +546,8 @@ class OrderView(APIView):
                self.auth = api_settings.UNAUTHENTICATED_TOKEN() # None
            else:
                self.auth = None
-   ```
-
+```
+   
    
 
 ## 4.2. 配置文件
