@@ -2,8 +2,8 @@
 layout: post
 title: "ElasticSearch 整理(二) 设置"
 date: 2018-03-28 22:48:01 +0800
-category: ElasticSearch
-tags: [ElasticSearch,ELK]
+category: ELK
+tags: [ELK]
 ---
 * content
 {:toc}
@@ -24,17 +24,17 @@ tags: [ElasticSearch,ELK]
 X-Pack将尝试在Elasticsearch中自动创建多个索引。默认情况下，Elasticsearch配置为允许自动创建索引，不需要其他步骤。但是，如果你有Elasticsearch禁用自动创建索引，你必须配置 [action.auto_create_index](https://www.elastic.co/guide/en/elasticsearch/reference/6.5/docs-index_.html#index-creation)的elasticsearch.yml，让X-包创建以下指标：
 
 	action.auto_create_index: .monitoring*,.watches,.triggered_watches,.watcher-history*,.ml*
-		
+
 ## 1.3. 命令行启动
 
 	./bin/elasticsearch
 
 ## 1.4. 守护进程运行
-	
+
 启动
 	
 	./bin/elasticsearch -d -p pid
-	
+
 关闭
 	
 	kill `cat pid`

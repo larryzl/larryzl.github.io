@@ -2,8 +2,8 @@
 layout: post
 title: "ElasticSearch 整理(一) 基础"
 date: 2018-03-28 14:55:18 +0800
-category: ElasticSearch
-tags: [ElasticSearch,ELK]
+category: ELK
+tags: [ELK]
 ---
 * content
 {:toc}
@@ -96,7 +96,7 @@ ELasticSearch 是一个近实时搜索平台。这意味着从索引文档到搜
 		java version "1.8.0_102"
 		Java(TM) SE Runtime Environment (build 1.8.0_102-b14)
 		Java HotSpot(TM) 64-Bit Server VM (build 25.102-b14, mixed mode)
-	
+		
 		$ echo $JAVA_HOME 
 		/usr/local/jdk1.8.0_102
 
@@ -105,7 +105,7 @@ ELasticSearch 是一个近实时搜索平台。这意味着从索引文档到搜
 		$ wget -O es.tgz https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.5.4.tar.gz  
 		$ tar zxf es.tgz 
 		$ mv elasticsearch-6.5.4 /usr/local/es
-		
+	
 3. 启动 ElasticSearch
 
 		$ cd /usr/local/es 
@@ -228,7 +228,7 @@ ELasticSearch 是一个近实时搜索平台。这意味着从索引文档到搜
 	  "_seq_no" : 0,
 	  "_primary_term" : 1
 	}
- 
+
 从上面可以看出，在客户索引中成功创建了一个新的客户文档。该文档还具有我们在索引时指定的内部标识1。
 
 值得注意的是，Elasticsearch不需要在将文档编入索引之前先显式创建索引。在前面的示例中，如果客户索引事先尚未存在，则Elasticsearch将自动创建客户索引。
@@ -257,7 +257,7 @@ ELasticSearch 是一个近实时搜索平台。这意味着从索引文档到搜
 现在让我们删除刚刚创建的索引，然后再次列出所有索引：
 
 	$ curl -X DELETE "localhost:9200/customer?pretty"
-	
+
 返回：
 
 	{
@@ -267,7 +267,7 @@ ELasticSearch 是一个近实时搜索平台。这意味着从索引文档到搜
 执行
 
 	$ curl -X GET "localhost:9200/_cat/indices?v"
-	
+
 返回：
 
 	health status index uuid pri rep docs.count docs.deleted store.size pri.store.size
@@ -387,7 +387,7 @@ ELasticSearch 是一个近实时搜索平台。这意味着从索引文档到搜
 		  "_seq_no" : 3,
 		  "_primary_term" : 1
 		}
-		
+	
 6. 查看当前文档数据
 
 		$ curl -X GET "localhost:9200/customer/_doc/1?pretty"                                                 
@@ -428,7 +428,7 @@ Elasticsearch提供了在给定查询条件（如SQL UPDATE-WHERE语句）的情
 	{"index":{"_id":"2"}}
 	{"name": "Jane Doe" }
 	'
-	
+
 返回
 
 	{
